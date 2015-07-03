@@ -1,0 +1,16 @@
+# Caterpillar Tube Pricing Data
+
+train = read.csv('../input/train_set.csv', stringsAsFactors = FALSE)
+test = read.csv('../input/test_set.csv', stringsAsFactors = FALSE)
+#str(train)
+
+library(ggplot2)
+g <- ggplot(train,aes(x=quantity, y=cost)) + #,color = supplier)) + 
+    geom_point(alpha=0.6)+ 
+    scale_x_log10() + scale_y_log10() + 
+    stat_smooth(method=lm)+
+    labs(title="Avg Tube Price per Volume Order")
+ 
+ 
+ 
+ggsave("Tube_pricing.png", g, width=14, height=10, units="in")
